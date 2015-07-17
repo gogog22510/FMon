@@ -1,0 +1,34 @@
+<project name="App Monitor (Java 5+)" default="all">
+  <target name="all" depends="compile,jar,withoutAgent,withAgent"/>
+  
+  <property name="classes.dir" value="bin" />
+  <property name="monitor.target" value="com.riskval.appmon.test.foo" />
+  	
+  <path id="classpath">
+	<pathelement location="${classes.dir}" />
+	<fileset dir="lib" includes="*.jar" />
+  </path>
+	        	
+  <target name="withAgent" description="run with monitoring added by java agent">
+    <java fork="yes" classpathref="classpath" classname="${monitor.target}">
+      <jvmarg value="-javaagent:dist/appmonitor.jar"/>
+    </java>
+  </target>
+
+  <target name="withoutAgent" description="run normally">
+    <java fork="yes" classpath="bin" classname="${monitor.target}">
+    </java>
+  </target>
+
+  <target name="compile" description="compile classes">
+    <delete dir="bin" />
+    <mkdir dir="bin" />
+    <javac source="1.6" srcdir="src" destdir="bin" debug="true" includeantruntime="true"
+              optimize="true" verbose="false" classpath="lib/javassist.jar">
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile" description="create agent jar">
+    <jar basedir="bin" destfile="dist/appmonitor.jar" manifest="src/Manifest.mf"/>
+  </target>
+</project>
