@@ -1,0 +1,2 @@
+Boot-Class-Path: lib/javassist.jar
+Premain-Class: com.riskval.appmon.test.SimpleMain
