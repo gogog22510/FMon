@@ -1,4 +1,4 @@
-package com.appmon.assist;
+package gogog22510.appmon.assist;
 
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
