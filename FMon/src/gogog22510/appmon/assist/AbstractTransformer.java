@@ -19,6 +19,7 @@ public abstract class AbstractTransformer implements ClassFileTransformer {
 	
 	public AbstractTransformer() {
 		redefinedMap = new HashMap<String, List<String>>();
+		initializeMapping(redefinedMap);
 	}
 	
 	protected void addNewMethod(String clazzName, String methodName) {
@@ -71,7 +72,7 @@ public abstract class AbstractTransformer implements ClassFileTransformer {
 	}
 	
 	protected void changeMethod(CtBehavior method) throws NotFoundException, CannotCompileException {
-		List<String> methods = redefinedMap.get(method.getClass().getName());
+		List<String> methods = redefinedMap.get(method.getDeclaringClass().getName());
 		if(methods.contains(method.getName())) {
 			changeMethodImpl(method);
 		}
