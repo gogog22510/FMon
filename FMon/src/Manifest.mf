@@ -1,2 +1,2 @@
 Boot-Class-Path: lib/javassist.jar
-Premain-Class: com.riskval.appmon.test.SimpleMain
+Premain-Class: gogog22510.appmon.test.SimpleMain
