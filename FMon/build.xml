@@ -2,7 +2,7 @@
   <target name="all" depends="compile,jar,withoutAgent,withAgent"/>
   
   <property name="classes.dir" value="bin" />
-  <property name="monitor.target" value="com.riskval.appmon.test.foo" />
+  <property name="monitor.target" value="gogog22510.appmon.test.foo" />
   	
   <path id="classpath">
 	<pathelement location="${classes.dir}" />
